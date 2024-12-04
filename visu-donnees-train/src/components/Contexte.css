@@ -1,0 +1,89 @@
+/* src/pages/Contexte.css */
+.contexte-container {
+  background-color: #f5f5f5; /* Couleur de fond douce */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  animation: fadeIn 1s ease-in-out; /* Animation d'apparition */
+}
+
+h2 {
+  font-size: 28px;
+  color: #283e51; /* Couleur cohérente avec le header */
+  margin-bottom: 20px;
+  text-align: center; /* Centrer le titre */
+  animation: slideIn 0.5s ease-out; /* Animation pour le titre */
+}
+
+p {
+  font-size: 18px;
+  color: #333; /* Couleur du texte */
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto; /* Permet le défilement horizontal */
+  margin-top: 30px;
+  animation: scaleIn 0.5s ease; /* Animation pour le tableau */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #4b79a1; /* Couleur du header de tableau */
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f0f0; /* Couleur des lignes paires */
+}
+
+tr:hover {
+  background-color: #ffeb3b; /* Couleur de survol des lignes */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
