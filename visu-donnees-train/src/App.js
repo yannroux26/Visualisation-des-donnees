@@ -1,15 +1,13 @@
 import React from "react";
-import TrainDataVisualization from "./components/TrainDataVisualization"; // Assurez-vous que le chemin est correct
+import Header from "./components/Header";
+import TrainDataVisualization from "./components/TrainDataVisualization";
 
-const App = () => {
-  // Chemin vers votre fichier CSV
-
+function App() {
   return (
-    <div>
-      <h1>Visualisation des données de trains</h1>
-      <TrainDataVisualization  />
-    </div>
+    <div className="app">
+      <Header />
+      <TrainDataVisualization />
+      </div>
   );
-};
-
+}
 export default App;
