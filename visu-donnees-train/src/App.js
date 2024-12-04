@@ -17,9 +17,9 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/context" element={<Contexte />} />
               <Route path="/map" element={<div className="image-container">
-        <CarteAnnulationFrance />
-        <CarteRetardFrance />
-      </div>}/>
+                <CarteAnnulationFrance />
+                <CarteRetardFrance />
+                </div>}/>
           </Routes>
       </Router>
   );
