@@ -14,49 +14,54 @@ const TrainDataMap = () => {
       d3.json(geoJsonFilePath),
     ])
       .then(([csvData, geoData]) => {
-        // Traiter les données CSV
         const trainData = csvData.map((d) => ({
           region: d["Region"].trim(),
           nbTrainsAnnules: +d["NbTrainsannulés"] || 0,
         }));
 
-        // Créer un dictionnaire des valeurs par région
         const dataByRegion = {};
         trainData.forEach((d) => {
           dataByRegion[d.region] = d.nbTrainsAnnules;
         });
 
-        // Dimensions de la carte
         const width = 800;
-        const height = 600;
+        const height = 700;
 
-        // Projections et chemin
         const projection = d3
           .geoMercator()
-          .center([2.5, 46.5]) // Centrage pour la France
+          .center([2.5, 46.5])
           .scale(2400)
           .translate([width / 2, height / 2]);
 
         const path = d3.geoPath().projection(projection);
 
-        // Palette de couleurs
         const colorScale = d3
           .scaleSequential()
           .domain([0, d3.max(trainData, (d) => d.nbTrainsAnnules)])
           .interpolator(d3.interpolateBlues);
 
-        // Supprimer les anciens éléments
         d3.select(mapRef.current).selectAll("*").remove();
 
-        // Créer le conteneur SVG
         const svg = d3
           .select(mapRef.current)
           .append("svg")
           .attr("width", width)
           .attr("height", height)
-          .style("background-color", "#f9f9f9");
+          .style("background-color", "#ffffff")
+          .style("border", "1px solid #ddd")
+          .style("box-shadow", "0 4px 10px rgba(0,0,0,0.1)");
 
-        // Ajouter les régions
+        // Add a title
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", 30)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "24px")
+          .attr("font-weight", "bold")
+          .attr("fill", "#333")
+          .text("Train Annulments Across French Regions");
+
         svg
           .append("g")
           .selectAll("path")
@@ -64,21 +69,22 @@ const TrainDataMap = () => {
           .join("path")
           .attr("d", path)
           .attr("fill", (d) => {
-            const regionName = d.properties.nom.trim(); // Nom de la région
+            const regionName = d.properties.nom.trim();
             return dataByRegion[regionName]
               ? colorScale(dataByRegion[regionName])
-              : "#ccc"; // Gris si aucune donnée
+              : "#ccc";
           })
-          .attr("stroke", "#000")
-          .attr("stroke-width", 0.5)
+          .attr("stroke", "#fff")
+          .attr("stroke-width", 0.7)
+          .attr("filter", "url(#shadow)") // Add shadow effect
           .on("mouseover", (event, d) => {
             const regionName = d.properties.nom;
-            const value = dataByRegion[regionName] || "Données non disponibles";
+            const value = dataByRegion[regionName] || "No Data";
             tooltip
               .style("visibility", "visible")
               .html(
-                `<strong>Région:</strong> ${regionName}<br>
-                 <strong>Trains annulés:</strong> ${value}`
+                `<strong>Region:</strong> ${regionName}<br>
+                 <strong>Train Annulments:</strong> ${value}`
               );
           })
           .on("mousemove", (event) => {
@@ -88,25 +94,26 @@ const TrainDataMap = () => {
           })
           .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-        // Ajouter un tooltip
+        // Tooltip
         const tooltip = d3
           .select(mapRef.current)
           .append("div")
           .style("position", "absolute")
-          .style("background", "rgba(0,0,0,0.7)")
-          .style("color", "white")
-          .style("padding", "8px")
-          .style("border-radius", "4px")
+          .style("background", "#333")
+          .style("color", "#fff")
+          .style("padding", "10px")
+          .style("border-radius", "5px")
+          .style("box-shadow", "0px 4px 10px rgba(0,0,0,0.1)")
           .style("visibility", "hidden")
-          .style("font-size", "12px");
+          .style("font-size", "14px");
 
-        // Ajouter une légende
+        // Legend
         const legendWidth = 300;
         const legendHeight = 10;
 
         const legend = svg
           .append("g")
-          .attr("transform", `translate(${width - legendWidth - 50},${height - 50})`);
+          .attr("transform", `translate(${width / 2 - legendWidth / 2},${height - 60})`);
 
         const legendScale = d3
           .scaleLinear()
@@ -132,9 +139,18 @@ const TrainDataMap = () => {
           .call(legendAxis)
           .select(".domain")
           .remove();
+
+        legend
+          .append("text")
+          .attr("x", legendWidth / 2)
+          .attr("y", -10)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "12px")
+          .attr("fill", "#333")
+          .text("Number of Train Annulments");
       })
       .catch((error) => {
-        console.error("Erreur lors du chargement des fichiers:", error);
+        console.error("Error loading files:", error);
       });
   }, []);
 
