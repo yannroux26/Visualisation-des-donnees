@@ -71,3 +71,15 @@ body {
 .map, .chart {
   width: 45%;
 }
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.image-container img {
+  width: 200px; /* Ajustez si nécessaire */
+  height: auto;
+}
