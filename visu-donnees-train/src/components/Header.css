@@ -1,40 +1,92 @@
-/* src/components/Header.css */
+/* Header container */
 .header {
-  background: linear-gradient(90deg, #4b79a1, #283e51);
-  padding: 20px;
-  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
+  padding: 20px 50px;
+  background: linear-gradient(to right, #2e3a59, #546e7a); /* Deep navy to slate gray */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.header:hover {
-  background: linear-gradient(90deg, #283e51, #4b79a1);
+/* Logo section */
+.logo {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff; /* Pure white for clarity */
 }
 
 .logo h1 {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
 }
 
+.tagline {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 5px;
+  color: #cfd8dc; /* Light gray-blue for subtle contrast */
+}
+
+/* Navigation section */
 .nav ul {
   list-style: none;
-  padding: 0;
   display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav ul li {
-  margin: 0 15px;
+.nav li {
+  position: relative;
 }
 
-.nav ul li a {
-  color: white;
+.nav li a {
+  color: #ffffff; /* Pure white for high contrast */
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
 }
 
-.nav ul li a:hover {
-  color: #ffeb3b;
+.nav li a:hover {
+  background: #1e88e5; /* Soft sky blue for hover effect */
+  color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(30, 136, 229, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Underline animation */
+.nav li::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #1e88e5; /* Same soft blue for underline effect */
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav li:hover::after {
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      padding: 10px 20px;
+  }
+
+  .nav ul {
+      flex-direction: column;
+      gap: 15px;
+  }
 }
