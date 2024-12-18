@@ -24,7 +24,7 @@ const TrainDataMap = () => {
           dataByRegion[d.region] = d.nbTrainsRetardes;
         });
 
-        const width = 800;
+        const width = 700;
         const height = 700;
 
         const projection = d3
@@ -147,7 +147,7 @@ const TrainDataMap = () => {
           .attr("text-anchor", "middle")
           .attr("font-size", "12px")
           .attr("fill", "#333")
-          .text("Number of Train delays");
+          .text("Retard de train par région en France");
       })
       .catch((error) => {
         console.error("Error loading files:", error);

@@ -1,0 +1,10 @@
+.train-data-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    animation: slideIn 0.5s ease;
+    overflow-y: hidden;
+
+    overflow-x: hidden;
+    max-width: 100%;
+}

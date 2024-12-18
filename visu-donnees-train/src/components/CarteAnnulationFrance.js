@@ -24,7 +24,7 @@ const TrainDataMap = () => {
           dataByRegion[d.region] = d.nbTrainsAnnules;
         });
 
-        const width = 800;
+        const width = 700;
         const height = 700;
 
         const projection = d3
@@ -60,7 +60,7 @@ const TrainDataMap = () => {
           .attr("font-size", "24px")
           .attr("font-weight", "bold")
           .attr("fill", "#333")
-          .text("Train Annulments Across French Regions");
+          .text("Annulement de train par région en France");
 
         svg
           .append("g")
