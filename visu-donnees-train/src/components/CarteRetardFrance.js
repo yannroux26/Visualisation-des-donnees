@@ -60,7 +60,7 @@ const TrainDataMap = () => {
           .attr("font-size", "24px")
           .attr("font-weight", "bold")
           .attr("fill", "#333")
-          .text("Train Delay Across French Regions");
+          .text("Retard de train par région en France");
 
         svg
           .append("g")

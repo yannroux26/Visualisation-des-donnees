@@ -84,7 +84,7 @@ const TrainDataMap = () => {
               .style("visibility", "visible")
               .html(
                 `<strong>Region:</strong> ${regionName}<br>
-                 <strong>Train Annulments:</strong> ${value}`
+                 <strong>Annulation de train:</strong> ${value}`
               );
           })
           .on("mousemove", (event) => {
@@ -147,7 +147,7 @@ const TrainDataMap = () => {
           .attr("text-anchor", "middle")
           .attr("font-size", "12px")
           .attr("fill", "#333")
-          .text("Number of Train Annulments");
+          .text("Nombre de trains annulés");
       })
       .catch((error) => {
         console.error("Error loading files:", error);
