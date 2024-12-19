@@ -15,7 +15,7 @@ const Contexte = () => {
         Nous commencerons par deux cartes de la France qui illustrent les retards des trains 
         et leurs annulations par région. Ensuite, nous vous proposerons un graphique circulaire 
         représentant les pourcentages de retards, d'annulations et de trains à l'heure pour 
-        chaque région. Enfin, nous analyserons l'évolution du taux de régularité au fil des mois 
+        chaque région. Enfin, nous analyserons l'évolution du taux de régularité au fil des années 
         depuis 2013 pour chaque région.
       </p>
       <div className="table-container">

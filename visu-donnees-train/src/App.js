@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Contexte from './components/Contexte';
 import TrainDataVisualization from './components/TrainDataVisualization';
 import PieChart from './components/PieChart';
+import Graph from './components/Graph';
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/context" element={<Contexte />} />
                 <Route path="/map" element={<TrainDataVisualization/>}/>
                 <Route path="/pie" element={<PieChart/>}/>                
+                <Route path="/graph" element={<Graph />}/>
             </Routes>
         </Router>
     );
