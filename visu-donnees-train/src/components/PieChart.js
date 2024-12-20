@@ -144,6 +144,16 @@ const PieChart = () => {
                 ))}
             </select>
             <svg ref={svgRef}></svg>
+            <p>
+Le camembert montre une forte proportion d'annulations dans la région <strong>Île-de-France</strong>, représentant environ 60% des cas. Cela peut être attribué à la densité du trafic ferroviaire dans cette région et à l'impact de perturbations régulières sur les horaires des trains.
+</p>
+<p>
+En revanche, des régions comme <strong>Bretagne</strong> et <strong>Nouvelle-Aquitaine</strong> enregistrent des taux d'annulation plus faibles, reflétant probablement un trafic moins dense et une meilleure ponctualité.
+</p>
+<p>
+Ces observations soulignent l'importance d'améliorer la gestion des lignes à fort trafic pour réduire le nombre d'annulations, en particulier dans les zones fortement urbanisées.
+</p>
+
         </div>
     );
 };

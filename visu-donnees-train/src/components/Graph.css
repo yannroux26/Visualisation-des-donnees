@@ -1,90 +1,118 @@
-.bar {
-    transition: fill 0.3s, height 0.3s;
-  }
-  .bar:hover {
-    fill: darkorange;
-  }
-  .label {
-    font-size: 10px;
-    fill: black;
-  }
-  /* Graph.css */
-
 /* General styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #444;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-  
-  /* Container for the graph */
-  .graph-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 700px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .tooltip {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    pointer-events: none; /* Prevent mouse events on the tooltip */
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0; /* Remove default body margin */
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #444;
+}
 
-  /* Legend styles */
-  .legend {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .legend-item {
-    display: flex;
-    align-items: center;
-    margin: 0 10px;
-    font-size: 14px;
-  }
-  
-  .legend-color {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    border-radius: 50%;
-  }
-  
-  .legend-color.blue {
-    background-color: steelblue;
-  }
-  
-  .legend-color.orange {
-    background-color: orange;
-  }
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center; /* Center the label */
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color:black;
+}
+
+/* Container for the graph */
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px; /* Increase max-width for more space */
+  max-height: 800px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox for graphs */
+.graph-row {
+  display: flex;
+  justify-content: center; /* Center the graphs */
+  gap: 20px; /* Space between the two graphs */
+  width: 100%; /* Ensure full width */
+}
+
+/* Graphs */
+.graph {
+  flex: 1; /* Allow graphs to expand equally */
+  width: 700px; /* Set a minimum width */
+  background: #f2f2f2; /* Light background for graphs */
+  border-radius: 8px; /* Round edges */
+  padding: 10px; /* Inner spacing */
+  height:400px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  pointer-events: none; /* Prevent mouse events on the tooltip */
+}
+
+/* Bar styles */
+.bar {
+  transition: fill 0.3s, height 0.3s;
+}
+.bar:hover {
+  fill: darkorange;
+}
+
+/* Label styles */
+.label {
+  font-size: 10px;
+  fill: black;
+}
+
+/* Legend styles */
+.legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.legend-color.blue {
+  background-color: steelblue;
+}
+
+.legend-color.orange {
+  background-color: orange;
+}
+.legend-color.green {
+  background-color: green;
+}
