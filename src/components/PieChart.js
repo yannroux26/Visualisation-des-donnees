@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import './Graph.css'; // Using the same CSS as the graph for a consistent design
+import './PieChart.css'; // Using the same CSS as the graph for a consistent design
 
 const PieChart = () => {
     const [regions, setRegions] = useState([]);
@@ -28,7 +28,6 @@ const PieChart = () => {
                 console.error("Region data not found");
                 return;
             }
-            
     
             const pieData = [
                 { name: "Annulés", value: +regionData.NbTrainsannulés },
@@ -131,33 +130,24 @@ const PieChart = () => {
     
 
     return (
-        <div className="graph-div">
-            <label htmlFor="region-select">Sélectionnez une région :</label>
-            <select
-                id="region-select"
-                value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value)}
-            >
-                {regions.map((region) => (
-                    <option key={region} value={region}>
-                        {region}
-                    </option>
-                ))}
-            </select>
-            <div class="graph-div">
-            <svg ref={svgRef}></svg>
-            </div>
-            <p>
-Le camembert montre une forte proportion d'annulations dans la région <strong>Île-de-France</strong>, représentant environ 60% des cas. Cela peut être attribué à la densité du trafic ferroviaire dans cette région et à l'impact de perturbations régulières sur les horaires des trains.
-</p>
-<p>
-En revanche, des régions comme <strong>Bretagne</strong> et <strong>Nouvelle-Aquitaine</strong> enregistrent des taux d'annulation plus faibles, reflétant probablement un trafic moins dense et une meilleure ponctualité.
-</p>
-<p>
-Ces observations soulignent l'importance d'améliorer la gestion des lignes à fort trafic pour réduire le nombre d'annulations, en particulier dans les zones fortement urbanisées.
-</p>
+        <div class="graph-div">
+  <label for="region-select">Sélectionnez une région :</label>
+  <select
+  id="region-select"
+  value={selectedRegion}
+  onChange={(e) => setSelectedRegion(e.target.value)}
+>
+  {regions.map((region, index) => (
+    <option key={index} value={region}>
+      {region}
+    </option>
+  ))}
+</select>
+  
+  <svg ref={svgRef}></svg>
+ 
+</div>
 
-        </div>
     );
 };
 
