@@ -80,5 +80,19 @@ body {
     margin-right: 5px;
     border-radius: 50%;
   }
+  .analysis-text {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+  }
+  .analysis-text p {
+    margin: 0;
+  }
   
   

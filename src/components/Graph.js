@@ -31,23 +31,16 @@ const Graph = () => {
                     total: +d["Nombre de trains programmés"]
                 }));
 
-            const groupedData = d3
-                .rollups(
-                    filteredData,
-                    (v) => ({
-                        annulments: d3.sum(v, (d) => d.annulments),
-                        delays: d3.sum(v, (d) => d.delays),
-                        total:  d3.sum(v, (d) => d.total),
-
-                    }),
-                    (d) => d.year
-                )
-                .map(([year, values]) => ({
-                    year,
-                    annulments: values.annulments,
-                    delays: values.delays,
-                }))
-                .sort((a, b) => a.year - b.year);
+                const groupedData = Array.from(
+                    d3.group(filteredData, d => d.year), // Utilisation de d3.group pour grouper les données par année
+                    ([year, values]) => ({
+                        year,
+                        annulments: d3.sum(values, (d) => d.annulments),
+                        delays: d3.sum(values, (d) => d.delays),
+                        total: d3.sum(values, (d) => d.total),
+                    })
+                ).sort((a, b) => a.year - b.year);
+                
 
             createLineChart(groupedData, graphRef.current);
             createRegularityChart(groupedData, regularityGraphRef.current); 
