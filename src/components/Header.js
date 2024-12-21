@@ -16,6 +16,8 @@ const Header = () => {
                     <li><Link to="/map">Carte</Link></li> 
                     <li><Link to="/pie">Camembert</Link></li>
                     <li><Link to="/graph">Graphe</Link></li>
+                    <li><Link to="/source">Sources</Link></li>
+
                 </ul>
             </nav>
         </header>

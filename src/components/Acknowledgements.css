@@ -1,0 +1,88 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #f9f9f9, #e0e0e0);
+    color: #333;
+}
+
+.acknowledgements-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.acknowledgements-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+.title {
+    text-align: center;
+    color: #1d5f74;
+    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Sources Section */
+.sources h2,
+.contributors h2 {
+    color: #1d5f74;
+    margin-bottom: 15px;
+    font-size: 24px;
+    border-bottom: 2px solid #1d5f74;
+    padding-bottom: 5px;
+}
+
+.sources ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sources li {
+    margin: 15px 0;
+}
+
+.sources li a {
+    text-decoration: none;
+    color: #3081c3;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.sources li a:hover {
+    text-decoration: underline;
+    color: #0056a3;
+}
+
+/* Contributors Section */
+.contributors p {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.contributors ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contributors li {
+    margin: 8px 0;
+    font-size: 18px;
+    color: #004c40;
+}
+
+/* Footer */
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+}

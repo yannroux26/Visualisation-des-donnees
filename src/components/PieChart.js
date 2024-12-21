@@ -56,10 +56,18 @@ const PieChart = () => {
       const regionData = data.find(d => d.Region === selectedRegion);
       if (!regionData) return;
 
+      const totalTrains = +regionData["Nombre de trains programmés"];
+      const canceledTrains = +regionData.NbTrainsannulés;
+      const delayedTrains = +regionData["Nombre de trains en retard à l'arrivée"];
+      const circulatedTrains = +regionData["Nombre de trains ayant circulé"];
+      const onTimeTrains = circulatedTrains - (canceledTrains + delayedTrains);
+      const punctualityRate = ((onTimeTrains / totalTrains) * 100).toFixed(2);
+      const trainsPerDelay = +regionData["Nombre de trains à l'heure pour un train en retard à l'arrivée"];
+
       const pieData = [
-        { name: "Annulés", value: +regionData.NbTrainsannulés },
-        { name: "En retard", value: +regionData["Nombre de trains en retard à l'arrivée"] },
-        { name: "Normaux", value: +regionData["Nombre de trains ayant circulé"] - (+regionData.NbTrainsannulés + +regionData["Nombre de trains en retard à l'arrivée"]) }
+        { name: "Annulés", value: canceledTrains },
+        { name: "En retard", value: delayedTrains },
+        { name: "Normaux", value: onTimeTrains }
       ];
 
       const width = 400;
@@ -82,28 +90,22 @@ const PieChart = () => {
       const g = svg.append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-      // Create a tooltip
-      const tooltip = d3.select("body").append("div")
-        .style("position", "absolute")
-        .style("background", "#fff")
-        .style("border", "1px solid #ccc")
-        .style("padding", "8px")
-        .style("border-radius", "4px")
-        .style("pointer-events", "none")
-        .style("display", "none");
+        const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-      g.selectAll('path')
+      g.selectAll(".arc")
         .data(pie(pieData))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', d => color(d.data.name))
-        .attr("stroke", "white")
-        .style("stroke-width", "2px")
-        .style("opacity", 0.7)
-        .on("mouseover", function (event, d) {
-          tooltip.style("display", "block")
-            .html(`<strong>${d.data.name}</strong>: ${d.data.value}`)
+        .enter().append("path")
+        .attr("class", "bar") // Add class for bar
+        .attr("d", arc)
+        .attr("fill", d => color(d.data.name))
+        .on("mouseover", function(event, d) {
+          const percentage = ((d.data.value / totalTrains) * 100).toFixed(2);
+          tooltip.transition()
+            .duration(200)
+            .style("opacity", .9);
+          tooltip.html(`<strong>${d.data.name}</strong>: ${d.data.value} (${percentage}%)`)
             .style("left", `${event.pageX + 10}px`)
             .style("top", `${event.pageY + 10}px`);
           d3.select(this).style("opacity", 1);
@@ -113,7 +115,9 @@ const PieChart = () => {
             .style("top", `${event.pageY + 10}px`);
         })
         .on("mouseout", function () {
-          tooltip.style("display", "none");
+          tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
           d3.select(this).style("opacity", 0.7);
         });
 
@@ -149,6 +153,7 @@ const PieChart = () => {
         .text(d => d);
     }
   }, [selectedRegion, data]);
+
 
   return (
     <div className="graph-div">

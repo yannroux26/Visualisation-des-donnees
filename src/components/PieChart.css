@@ -2,7 +2,7 @@
     transition: fill 0.3s, height 0.3s;
   }
   .bar:hover {
-    fill: darkorange;
+    fill: gray;
   }
   .label {
     font-size: 10px;

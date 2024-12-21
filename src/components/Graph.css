@@ -25,7 +25,7 @@ select {
   border-radius: 4px;
   font-size: 14px;
   margin-bottom: 20px;
-  color:black;
+  color: black;
 }
 
 /* Container for the graph */
@@ -57,7 +57,7 @@ select {
   background: #f2f2f2; /* Light background for graphs */
   border-radius: 8px; /* Round edges */
   padding: 10px; /* Inner spacing */
-  height:400px;
+  height: 400px;
 }
 
 /* Tooltip */
@@ -115,4 +115,40 @@ select {
 }
 .legend-color.green {
   background-color: green;
+}
+
+/* Analysis Section Styling */
+.analysis-container {
+  margin-top: 30px;
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  justify-content: center;
+  padding-left: 40%;
+}
+
+.analysis-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  margin-left:-70%;
+}
+
+.analysis-text {
+  width:25%;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+.analysis-text p {
+  margin: 0;
 }
