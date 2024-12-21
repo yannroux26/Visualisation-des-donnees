@@ -40,12 +40,12 @@ const PieChart = () => {
 
     return (
       <>
-        Dans la région {selectedRegion} : <br />
-        - Un total de {totalTrains.toLocaleString()} trains ont été programmés.<br />
-        - {circulatedTrains.toLocaleString()} trains ont circulé, avec {canceledTrains.toLocaleString()} annulés ({((canceledTrains / totalTrains) * 100).toFixed(2)}%). <br />
-        - {delayedTrains.toLocaleString()} trains ont été en retard, laissant {onTimeTrains.toLocaleString()} trains à l'heure.<br />
-        - Le taux de régularité est d'environ {punctualityRate}%.<br />
-        - Pour chaque train en retard, il y a environ {trainsPerDelay.toFixed(2)} trains à l'heure.<br />
+        Dans la région <b>{selectedRegion} </b>: <br />
+        - Un total de <b>{totalTrains.toLocaleString()}</b> trains ont été programmés.<br />
+        - <b>{circulatedTrains.toLocaleString()}</b> trains ont circulé, avec <b>{canceledTrains.toLocaleString()}</b> annulés <b>({((canceledTrains / totalTrains) * 100).toFixed(2)}%)</b>. <br />
+        - <b>{delayedTrains.toLocaleString()}</b> trains ont été en retard, laissant <b>{onTimeTrains.toLocaleString()}</b> trains à l'heure.<br />
+        - Le taux de régularité est d'environ <b>{punctualityRate}% </b>.<br />
+        - Pour chaque train en retard, il y a environ <b>{trainsPerDelay.toFixed(2)}</b> trains à l'heure.<br />
       </>
     );
 };
